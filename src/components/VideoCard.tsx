@@ -20,7 +20,9 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onPlay }) => {
         {!imgError ? (
           <img
             src={video.thumbnail}
-            alt={video.title}
+            alt={`${video.title} - ${video.category} food video`}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover group-hover:scale-105 opacity-90 group-hover:opacity-100 transition-all duration-500"

@@ -20,7 +20,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSelect }) => {
         {!imgError ? (
           <img
             src={recipe.coverImage}
-            alt={recipe.name}
+            alt={`${recipe.name} - authentic ${recipe.cuisine} recipe`}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -57,7 +59,17 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSelect }) => {
             {recipe.cuisine} · {recipe.dishType}
           </span>
           <h3 className="font-serif text-lg font-bold text-[#35271F] group-hover:text-[#284B36] transition-colors leading-snug">
-            {recipe.name}
+            <a
+              href={`#/recipe/${recipe.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelect(recipe.slug);
+              }}
+              className="hover:underline"
+              aria-label={`View recipe: ${recipe.name}`}
+            >
+              {recipe.name}
+            </a>
           </h3>
           <p className="text-xs text-[#78685D] leading-relaxed line-clamp-2">
             {recipe.description}
@@ -77,9 +89,18 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, onSelect }) => {
             </span>
           </div>
 
-          <span className="inline-flex items-center gap-1 font-semibold text-[#284B36] group-hover:underline">
-            View Recipe <ArrowRight className="w-3.5 h-3.5" />
-          </span>
+          <a
+            href={`#/recipe/${recipe.slug}`}
+            onClick={(e) => {
+              e.preventDefault();
+              onSelect(recipe.slug);
+            }}
+            className="inline-flex items-center gap-1 font-semibold text-[#284B36] hover:underline"
+            aria-label={`View full recipe instructions for ${recipe.name}`}
+          >
+            <span>View Recipe</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </div>

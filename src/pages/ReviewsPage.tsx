@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { ReviewCard } from '../components/ReviewCard';
 import { RESTAURANT_REVIEWS } from '../data/reviews';
-import { Star, MapPin, DollarSign, Filter, Info, X } from 'lucide-react';
+import { Star, MapPin, DollarSign, Filter, Info, X, Flame, Sparkles } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 export const ReviewsPage: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState<string>('All');
@@ -18,6 +20,8 @@ export const ReviewsPage: React.FC = () => {
     'Bengali Street & Heritage Snacks',
   ];
   const priceRanges = ['All', '$', '$$', '$$$'];
+
+  const trendingReview = RESTAURANT_REVIEWS[0];
 
   const filteredReviews = useMemo(() => {
     return RESTAURANT_REVIEWS.filter((rev) => {
@@ -42,6 +46,47 @@ export const ReviewsPage: React.FC = () => {
           Unvarnished, balanced evaluations covering acoustics, service cadence, ingredient integrity, and honest pros & cons.
         </p>
       </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.reviews}
+        trendingLabel="Trending Dining Inquiries"
+      />
+
+      {/* Trending Review Highlight */}
+      {selectedCity === 'All' && selectedCuisine === 'All' && selectedPrice === 'All' && (
+        <section className="bg-gradient-to-r from-amber-600/10 via-[#F4A62A]/10 to-[#FFF6E8] p-6 rounded-2xl border border-amber-600/20 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
+              <Flame className="w-4 h-4 fill-amber-700 text-amber-700" />
+              <span>Trending Critique This Month</span>
+            </span>
+            <span className="text-xs text-[#78685D]">
+              Fictional Editorial Benchmark
+            </span>
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white/90 p-4 rounded-xl border border-[#35271F]/10">
+            <div>
+              <div className="flex items-center gap-2 text-xs text-[#78685D] mb-1">
+                <span className="font-bold text-[#B83A24]">{trendingReview.city}</span>
+                <span>·</span>
+                <span>{trendingReview.cuisine}</span>
+                <span>·</span>
+                <span>Price {trendingReview.priceRange}</span>
+              </div>
+              <h2 className="font-serif text-lg font-bold text-[#35271F]">
+                Which Dining Experience is Featured in This Week's Critique Benchmark?
+              </h2>
+              <p className="text-xs text-[#78685D] mt-0.5">
+                Our featured dining critique examines <strong>{trendingReview.name}</strong> in {trendingReview.city} ({trendingReview.cuisine}, Price {trendingReview.priceRange}): {trendingReview.summary}
+              </p>
+            </div>
+            <div className="text-xs font-semibold text-amber-800 bg-[#FFF6E8] px-3 py-1.5 rounded-lg border border-amber-500/20 whitespace-nowrap">
+              Top Pick: {trendingReview.dishRecommendations[0]}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Mandatory PRD Transparency Disclaimer */}
       <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-start gap-3 text-xs sm:text-sm text-[#35271F]">

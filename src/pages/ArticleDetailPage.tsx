@@ -168,7 +168,9 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({
           {!imgError ? (
             <img
               src={article.coverImage}
-              alt={article.title}
+              alt={`${article.title} - ${article.category} editorial food photography`}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
               className="w-full h-full object-cover"

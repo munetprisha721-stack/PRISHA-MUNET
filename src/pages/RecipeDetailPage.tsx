@@ -173,7 +173,9 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
           {!imgError ? (
             <img
               src={recipe.coverImage}
-              alt={recipe.name}
+              alt={`${recipe.name} - prepared with authentic ingredients and garnish`}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
               className="w-full h-full object-cover"

@@ -1,5 +1,7 @@
 import React from 'react';
-import { UtensilsCrossed, Heart, Compass, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
+import { UtensilsCrossed, Heart, Compass, ShieldCheck, Sparkles, BookOpen, Flame } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -7,7 +9,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
       {/* Editorial Lead Header */}
       <div className="space-y-4 text-center max-w-2xl mx-auto">
         <div className="w-12 h-12 rounded bg-[#B83A24] flex items-center justify-center text-white mx-auto shadow-sm">
@@ -24,14 +26,48 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </p>
       </div>
 
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.about}
+        trendingLabel="Trending Editorial Mission"
+      />
+
+      {/* Trending Editorial Themes in 2026 */}
+      <section className="bg-gradient-to-r from-[#B83A24]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-5 rounded-2xl border border-[#B83A24]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-[#B83A24] text-white flex items-center justify-center shrink-0">
+            <Flame className="w-4 h-4 fill-white" />
+          </div>
+          <div>
+            <span className="font-bold uppercase tracking-wider text-[#B83A24] block">
+              Trending Research Focus
+            </span>
+            <p className="text-[#35271F] font-semibold text-sm">
+              Documenting Indigenous Grains, Millets & Coastal Street Artisans
+            </p>
+          </div>
+        </div>
+        <a
+          href="#/explore"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('#/explore');
+          }}
+          className="text-xs font-semibold text-[#B83A24] hover:underline whitespace-nowrap"
+          aria-label="Read field essays and food stories"
+        >
+          <span>Read Field Essays & Stories →</span>
+        </a>
+      </section>
+
       {/* Mission & Background (From PRD Section 11) */}
       <div className="bg-white p-8 sm:p-12 rounded-2xl border border-[#35271F]/10 shadow-xs space-y-6 text-[#35271F]/90 leading-relaxed text-base sm:text-[17px]">
         <h2 className="font-serif text-2xl font-bold text-[#35271F] border-b border-[#35271F]/10 pb-4">
-          Our Story & Vision
+          What is the Story and Mission Behind TasteTrails?
         </h2>
 
         <p>
-          TasteTrails is a food-focused digital publication dedicated to discovering flavours, sharing culinary stories, and exploring the experiences behind memorable meals.
+          TasteTrails is a food-focused digital publication dedicated to discovering authentic flavours, sharing culinary stories, and exploring the cultural heritage behind memorable meals across Indian street food markets, regional kitchens, and restaurant gems.
         </p>
 
         <p>
@@ -55,8 +91,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* Editorial Principles */}
       <div className="space-y-6">
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F] text-center">
-          Our Editorial Pillars
+          What Core Editorial Pillars Guide Our Food Writing and Recipes?
         </h2>
+        <p className="text-center text-xs sm:text-sm text-[#78685D] max-w-xl mx-auto">
+          Our editorial board adheres to three non-negotiable standards: unvarnished critique honesty, deep subcontinental heritage research, and home-tested recipe precision.
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-xl border border-[#35271F]/10 space-y-3">
@@ -94,8 +133,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* Editorial Team */}
       <div className="bg-white p-8 sm:p-10 rounded-2xl border border-[#35271F]/10 space-y-6">
         <h2 className="font-serif text-2xl font-bold text-[#35271F] border-b border-[#35271F]/10 pb-4">
-          Contributing Writers & Editors
+          Who Are the Contributing Writers and Culinary Editors Behind TasteTrails?
         </h2>
+        <p className="text-xs sm:text-sm text-[#78685D]">
+          Our multidisciplinary masthead unites seasoned food journalists, heritage recipe researchers, and visual documentarians across India.
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="flex items-start gap-3">

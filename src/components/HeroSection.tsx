@@ -34,21 +34,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={onExplore}
+              <a
+                href="#/explore"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onExplore();
+                }}
                 className="px-6 py-3.5 bg-[#B83A24] hover:bg-[#9d301d] text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-all shadow-sm flex items-center gap-2"
+                aria-label="Explore All Food Stories and Street Guides"
               >
                 <Compass className="w-4 h-4" />
                 <span>Explore Food Stories</span>
-              </button>
+              </a>
 
-              <button
-                onClick={onWatchVlogs}
+              <a
+                href="#/vlogs"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onWatchVlogs();
+                }}
                 className="px-6 py-3.5 bg-white hover:bg-[#FFF6E8] text-[#35271F] border border-[#35271F]/20 text-xs font-semibold uppercase tracking-wider rounded-lg transition-all shadow-xs flex items-center gap-2"
+                aria-label="Watch Street Food Vlogs and Video Tours"
               >
                 <Play className="w-4 h-4 text-[#B83A24] fill-[#B83A24]" />
                 <span>Watch Food Vlogs</span>
-              </button>
+              </a>
             </div>
 
             {/* Quiet Credential Ribbon */}
@@ -76,7 +86,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {!imgError ? (
                 <img
                   src="/src/assets/images/hero_indian_feast_1792023725138.jpg"
-                  alt="Lavish Indian Feast on Rustic Table"
+                  alt="Lavish Indian feast with fragrant saffron biryani, copper kadai butter chicken, crisp naan, and street chaat"
+                  loading="eager"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setImgError(true)}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"

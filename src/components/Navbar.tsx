@@ -53,10 +53,14 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-8 h-20">
           {/* Zone 1: Single element wordmark in editorial serif */}
-          <button
-            onClick={() => handleLinkClick('#/')}
+          <a
+            href="#/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick('#/');
+            }}
             className="flex items-center gap-2 text-left group whitespace-nowrap shrink-0 focus-visible:outline-none"
-            aria-label="TasteTrails Home"
+            aria-label="TasteTrails Home - Food Stories and Recipes"
           >
             <div className="w-9 h-9 rounded bg-[#B83A24] flex items-center justify-center text-white shadow-sm">
               <UtensilsCrossed className="w-5 h-5 text-[#FFF6E8]" />
@@ -66,30 +70,35 @@ export const Navbar: React.FC<NavbarProps> = ({
                 TasteTrails
               </span>
             </div>
-          </button>
+          </a>
 
           {/* Zone 2: Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#35271F]/80">
+          <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#35271F]/80">
             {navLinks.map((link) => {
               const isActive =
                 link.path === '#/'
                   ? currentPath === '#/' || currentPath === ''
                   : currentPath.startsWith(link.path);
               return (
-                <button
+                <a
                   key={link.path}
-                  onClick={() => handleLinkClick(link.path)}
+                  href={link.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(link.path);
+                  }}
                   className={`transition-colors py-1 relative whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'text-[#B83A24] font-semibold'
                       : 'text-[#35271F]/80 hover:text-[#B83A24]'
                   }`}
+                  aria-label={`Go to ${link.label} page`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#B83A24] rounded-full" />
                   )}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -98,34 +107,45 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenSearch}
-              className="p-2 text-[#35271F] hover:text-[#B83A24] hover:bg-[#35271F]/5 rounded-lg transition-colors focus-visible:outline-none"
+              className="p-2 text-[#35271F] hover:text-[#B83A24] hover:bg-[#35271F]/5 rounded-lg transition-colors focus-visible:outline-none flex items-center gap-1.5"
               title="Search articles, recipes, and reviews (Ctrl+K)"
-              aria-label="Search articles"
+              aria-label="Search articles, recipes, and reviews"
             >
               <Search className="w-5 h-5" />
+              <span className="sr-only">Search TasteTrails Articles and Recipes</span>
             </button>
 
-            <button
-              onClick={() => handleLinkClick('#/bookmarks')}
-              className="relative p-2 text-[#35271F] hover:text-[#B83A24] hover:bg-[#35271F]/5 rounded-lg transition-colors focus-visible:outline-none"
-              title="Saved Articles"
-              aria-label="Saved Articles"
+            <a
+              href="#/bookmarks"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('#/bookmarks');
+              }}
+              className="relative p-2 text-[#35271F] hover:text-[#B83A24] hover:bg-[#35271F]/5 rounded-lg transition-colors focus-visible:outline-none flex items-center"
+              title="Saved Articles and Recipes"
+              aria-label="View Saved Bookmarks and Articles"
             >
               <Bookmark className="w-5 h-5" />
+              <span className="sr-only">View Saved Articles</span>
               {bookmarkCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#B83A24] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {bookmarkCount}
                 </span>
               )}
-            </button>
+            </a>
 
-            <button
-              onClick={() => handleLinkClick('#/explore')}
+            <a
+              href="#/explore"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('#/explore');
+              }}
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#B83A24] hover:bg-[#9d301d] rounded transition-all shadow-sm focus-visible:outline-none whitespace-nowrap shrink-0"
+              aria-label="Explore All Food Stories and Guides"
             >
               <Compass className="w-4 h-4" />
-              <span>Explore Now</span>
-            </button>
+              <span>Explore Food Stories</span>
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -134,6 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <span className="sr-only">Toggle Navigation Menu</span>
             </button>
           </div>
         </div>
@@ -144,17 +165,27 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="lg:hidden border-t border-[#35271F]/10 bg-[#FFF6E8] px-4 pt-4 pb-6 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-2">
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link.path}
-                onClick={() => handleLinkClick(link.path)}
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(link.path);
+                }}
                 className="text-left px-3 py-2 text-base font-medium text-[#35271F] hover:bg-[#35271F]/5 rounded-md transition-colors"
+                aria-label={`Go to ${link.label}`}
               >
-                {link.label}
-              </button>
+                <span>{link.label}</span>
+              </a>
             ))}
-            <button
-              onClick={() => handleLinkClick('#/bookmarks')}
+            <a
+              href="#/bookmarks"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('#/bookmarks');
+              }}
               className="text-left px-3 py-2 text-base font-medium text-[#35271F] hover:bg-[#35271F]/5 rounded-md transition-colors flex items-center justify-between"
+              aria-label="View Saved Bookmarks"
             >
               <span>Saved Articles</span>
               {bookmarkCount > 0 && (
@@ -162,15 +193,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {bookmarkCount}
                 </span>
               )}
-            </button>
+            </a>
           </div>
           <div className="pt-2">
-            <button
-              onClick={() => handleLinkClick('#/explore')}
-              className="w-full py-3 text-center text-xs font-semibold uppercase tracking-wider text-white bg-[#B83A24] rounded hover:bg-[#9d301d] transition-colors"
+            <a
+              href="#/explore"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('#/explore');
+              }}
+              className="block w-full py-3 text-center text-xs font-semibold uppercase tracking-wider text-white bg-[#B83A24] rounded hover:bg-[#9d301d] transition-colors"
+              aria-label="Explore All 12 Food Stories"
             >
-              Explore All Stories
-            </button>
+              <span>Explore All 12 Food Stories</span>
+            </a>
           </div>
         </div>
       )}

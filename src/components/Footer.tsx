@@ -12,14 +12,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#FFF6E8]/10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-[#B83A24] flex items-center justify-center text-[#FFF6E8]">
+            <a
+              href="#/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('#/');
+              }}
+              className="inline-flex items-center gap-2 group"
+              aria-label="TasteTrails Home - Good Food and Great Stories"
+            >
+              <div className="w-8 h-8 rounded bg-[#B83A24] flex items-center justify-center text-[#FFF6E8] shadow-xs">
                 <UtensilsCrossed className="w-4 h-4" />
               </div>
-              <span className="font-serif text-2xl font-bold tracking-tight text-[#FFF6E8]">
+              <span className="font-serif text-2xl font-bold tracking-tight text-[#FFF6E8] group-hover:text-[#F4A62A] transition-colors">
                 TasteTrails
               </span>
-            </div>
+            </a>
             <p className="text-[#F4A62A] font-serif italic text-base">
               Good Food. Great Stories. Unforgettable Flavours.
             </p>
@@ -36,52 +44,82 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-[#FFF6E8]/80">
               <li>
-                <button
-                  onClick={() => onNavigate('#/')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="TasteTrails Home Page"
                 >
                   Home
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="All 12 Food Articles & Stories"
                 >
                   All 12 Articles
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/recipes')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/recipes"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/recipes');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Authentic Indian Recipe Directory"
                 >
                   Recipe Directory
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/vlogs')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/vlogs"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/vlogs');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Food Vlogs & Video Tours"
                 >
                   Food Vlogs & Tours
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/reviews')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/reviews"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/reviews');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Restaurant Critiques & Ratings"
                 >
                   Restaurant Critiques
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/bookmarks')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/bookmarks"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/bookmarks');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Your Saved Bookmarks"
                 >
                   Saved Bookmarks
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -93,44 +131,69 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-[#FFF6E8]/80">
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore?cat=Indian Street Food')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore?cat=Indian%20Street%20Food"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore?cat=Indian Street Food');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Explore Indian Street Food stories"
                 >
                   Indian Street Food
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore?cat=Traditional Indian Cuisine')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore?cat=Traditional%20Indian%20Cuisine"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore?cat=Traditional Indian Cuisine');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Explore Traditional Indian Cuisine stories"
                 >
                   Traditional Cuisine
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore?cat=Recipes and Cooking')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore?cat=Recipes%20and%20Cooking"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore?cat=Recipes and Cooking');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Explore Recipes and Cooking guides"
                 >
                   Recipes & Cooking
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore?cat=Desserts and Baking')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore?cat=Desserts%20and%20Baking"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore?cat=Desserts and Baking');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Explore Desserts and Baking stories"
                 >
                   Desserts & Sweets
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/explore?cat=Food Travel')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/explore?cat=Food%20Travel"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/explore?cat=Food Travel');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Explore Food Travel Guides"
                 >
                   Food Travel Guides
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -142,36 +205,64 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-[#FFF6E8]/80 mb-6">
               <li>
-                <button
-                  onClick={() => onNavigate('#/about')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/about');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="About TasteTrails Mission and Team"
                 >
                   About Our Mission
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('#/contact')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="#/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('#/contact');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
+                  aria-label="Contact TasteTrails and Editorial Submissions"
                 >
                   Contact & Submissions
-                </button>
+                </a>
               </li>
             </ul>
             <div className="pt-2 border-t border-[#FFF6E8]/10">
               <span className="text-xs text-[#FFF6E8]/60 block mb-2">Connect with us</span>
               <div className="flex items-center gap-3 text-xs text-[#F4A62A]">
-                <span className="hover:underline cursor-pointer flex items-center gap-0.5">
-                  YouTube <ArrowUpRight className="w-3 h-3" />
-                </span>
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center gap-0.5"
+                  aria-label="TasteTrails on YouTube channel"
+                >
+                  <span>TasteTrails YouTube</span> <ArrowUpRight className="w-3 h-3" />
+                </a>
                 <span className="text-[#FFF6E8]/30">·</span>
-                <span className="hover:underline cursor-pointer flex items-center gap-0.5">
-                  Instagram <ArrowUpRight className="w-3 h-3" />
-                </span>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center gap-0.5"
+                  aria-label="TasteTrails on Instagram profile"
+                >
+                  <span>TasteTrails Instagram</span> <ArrowUpRight className="w-3 h-3" />
+                </a>
                 <span className="text-[#FFF6E8]/30">·</span>
-                <span className="hover:underline cursor-pointer flex items-center gap-0.5">
-                  Pinterest <ArrowUpRight className="w-3 h-3" />
-                </span>
+                <a
+                  href="https://www.pinterest.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center gap-0.5"
+                  aria-label="TasteTrails on Pinterest boards"
+                >
+                  <span>TasteTrails Pinterest</span> <ArrowUpRight className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>

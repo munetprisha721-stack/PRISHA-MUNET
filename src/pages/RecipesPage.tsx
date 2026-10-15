@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { RecipeCard } from '../components/RecipeCard';
 import { RECIPES } from '../data/recipes';
-import { Utensils, Filter, Check, X } from 'lucide-react';
+import { Utensils, Filter, Check, X, Flame, Clock } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 interface RecipesPageProps {
   onNavigate: (path: string) => void;
@@ -14,6 +16,10 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({ onNavigate }) => {
 
   const cuisines = ['All', 'North Indian', 'Hyderabadi', 'Maharashtrian', 'Punjabi', 'Kashmiri & Awadhi'];
   const dishTypes = ['All', 'Curry', 'Rice', 'Street Food', 'Snack', 'Dessert'];
+
+  const trendingRecipes = useMemo(() => {
+    return [RECIPES[0], RECIPES[1], RECIPES[2]];
+  }, []);
 
   const filteredRecipes = useMemo(() => {
     return RECIPES.filter((recipe) => {
@@ -39,6 +45,61 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({ onNavigate }) => {
           Master timeless Indian dishes with exact metric measurements, allergen guidelines, equipment checklists, and step-by-step chef tips.
         </p>
       </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.recipes}
+        trendingLabel="Trending Recipe Focus"
+      />
+
+      {/* Trending in the Kitchen Right Now */}
+      {selectedCuisine === 'All' && selectedDishType === 'All' && !vegOnly && (
+        <section className="bg-gradient-to-r from-[#284B36]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-6 rounded-2xl border border-[#284B36]/20 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-[#284B36] text-white flex items-center justify-center">
+                <Flame className="w-4 h-4 fill-white" />
+              </div>
+              <h2 className="font-serif text-lg font-bold text-[#35271F]">
+                Which Authentic Indian Recipes Are Trending in Home Kitchens This Week?
+              </h2>
+            </div>
+            <span className="text-xs text-[#78685D] uppercase font-semibold">
+              Top Prepared Dishes
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm text-[#78685D]">
+            Home cooks are currently preparing authentic Butter Chicken, fragrant Kolkata Mutton Biryani, and crispy street-style Samosas with step-by-step guidance.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {trendingRecipes.map((r) => (
+              <a
+                key={r.id}
+                href={`#/recipe/${r.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(`#/recipe/${r.slug}`);
+                }}
+                className="bg-white/90 p-4 rounded-xl border border-[#35271F]/10 hover:border-[#284B36] cursor-pointer transition-all hover:shadow-xs group block"
+                aria-label={`View recipe instructions for ${r.name}`}
+              >
+                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#284B36] mb-1">
+                  <span>{r.cuisine} · {r.dishType}</span>
+                  <span className="text-[#78685D] flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> {r.prepTimeMinutes + r.cookTimeMinutes}m
+                  </span>
+                </div>
+                <h3 className="font-serif font-bold text-sm text-[#35271F] group-hover:text-[#284B36] line-clamp-1">
+                  {r.name}
+                </h3>
+                <span className="text-[11px] text-[#284B36] font-semibold mt-2 block group-hover:underline">
+                  View {r.name} Recipe & Cooking Steps →
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Filter Toolbar */}
       <div className="bg-white p-5 rounded-2xl border border-[#35271F]/10 shadow-xs space-y-4">

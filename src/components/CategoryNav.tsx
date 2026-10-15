@@ -39,11 +39,11 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
               Curated Departments
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F]">
-              Explore by Category
+              How Can You Explore Regional Indian Cuisine by Category?
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#78685D] max-w-md">
-            Dive deep into regional street trails, royal heritage recipes, candid critiques, and video travelogues.
+            TasteTrails organizes India's culinary landscape into eight curated departments—from street food trails and heritage curries to restaurant critiques and video travelogues.
           </p>
         </div>
 
@@ -54,14 +54,19 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
             const isSelected = activeCategory === cat.name;
 
             return (
-              <button
+              <a
                 key={cat.name}
-                onClick={() => onSelectCategory(cat.name)}
+                href={`#/explore?cat=${encodeURIComponent(cat.name)}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCategory(cat.name);
+                }}
                 className={`text-left p-4 sm:p-5 rounded-xl border transition-all duration-200 flex flex-col justify-between group ${
                   isSelected
                     ? 'bg-white border-[#B83A24] shadow-md ring-1 ring-[#B83A24]'
                     : 'bg-white/70 hover:bg-white border-[#35271F]/10 hover:border-[#35271F]/30 hover:shadow-sm'
                 }`}
+                aria-label={`Browse ${cat.name} food stories and guides`}
               >
                 <div className={`w-10 h-10 rounded-lg ${cat.bg} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                   <Icon className={`w-5 h-5 ${cat.color}`} />
@@ -70,11 +75,11 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   <h3 className="font-serif font-bold text-sm sm:text-base text-[#35271F] group-hover:text-[#B83A24] transition-colors leading-snug">
                     {cat.name}
                   </h3>
-                  <span className="text-[11px] text-[#78685D] mt-0.5 block">
-                    Browse stories & guides →
+                  <span className="text-[11px] text-[#78685D] mt-0.5 block group-hover:text-[#B83A24]">
+                    Browse {cat.name} guides →
                   </span>
                 </div>
-              </button>
+              </a>
             );
           })}
         </div>

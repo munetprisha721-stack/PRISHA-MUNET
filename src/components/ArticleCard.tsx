@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Article } from '../types';
 import { BookmarkButton } from './BookmarkButton';
-import { Clock, UtensilsCrossed } from 'lucide-react';
+import { Clock, UtensilsCrossed, ArrowRight } from 'lucide-react';
 
 interface ArticleCardProps {
   article: Article;
@@ -26,7 +26,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           {!imgError ? (
             <img
               src={article.coverImage}
-              alt={article.title}
+              alt={`${article.title} - ${article.category}`}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -49,7 +51,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </div>
 
             <h3 className="font-serif text-lg sm:text-xl font-bold text-[#35271F] group-hover:text-[#B83A24] transition-colors leading-snug">
-              {article.title}
+              <a
+                href={`#/article/${article.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelect(article.slug);
+                }}
+                className="hover:underline"
+                aria-label={`Read article: ${article.title}`}
+              >
+                {article.title}
+              </a>
             </h3>
 
             <p className="text-sm text-[#78685D] leading-relaxed line-clamp-2">
@@ -59,9 +71,23 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
           <div className="pt-4 mt-2 border-t border-[#35271F]/10 flex items-center justify-between text-xs text-[#78685D]">
             <span>By {article.author.name}</span>
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#35271F]/40" />
-              <span>{article.readingTime}</span>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-[#35271F]/40" />
+                <span>{article.readingTime}</span>
+              </div>
+              <a
+                href={`#/article/${article.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelect(article.slug);
+                }}
+                className="inline-flex items-center gap-1 font-semibold text-[#B83A24] hover:underline"
+                aria-label={`Read full story: ${article.title}`}
+              >
+                <span>Read Story</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         </div>
@@ -79,7 +105,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {!imgError ? (
           <img
             src={article.coverImage}
-            alt={article.title}
+            alt={`${article.title} - ${article.category}`}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -104,7 +132,17 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
 
           <h3 className="font-serif text-lg font-bold text-[#35271F] group-hover:text-[#B83A24] transition-colors leading-snug line-clamp-2">
-            {article.title}
+            <a
+              href={`#/article/${article.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelect(article.slug);
+              }}
+              className="hover:underline"
+              aria-label={`Read article: ${article.title}`}
+            >
+              {article.title}
+            </a>
           </h3>
 
           <p className="text-sm text-[#78685D] leading-relaxed line-clamp-3">
@@ -115,9 +153,23 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {/* Footer info */}
         <div className="pt-3 border-t border-[#35271F]/10 flex items-center justify-between text-xs text-[#78685D]">
           <span>{article.author.name}</span>
-          <div className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-[#35271F]/40" />
-            <span>{article.readingTime}</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-[#35271F]/40" />
+              <span>{article.readingTime}</span>
+            </div>
+            <a
+              href={`#/article/${article.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelect(article.slug);
+              }}
+              className="inline-flex items-center gap-1 font-semibold text-[#B83A24] hover:underline"
+              aria-label={`Read full story: ${article.title}`}
+            >
+              <span>Read Story</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </div>

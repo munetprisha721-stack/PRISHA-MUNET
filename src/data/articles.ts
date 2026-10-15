@@ -152,7 +152,7 @@ export const ARTICLES: Article[] = [
     ],
     relatedArticleSlugs: ['ultimate-guide-to-indian-street-food', 'how-to-discover-hidden-food-gems', 'indian-desserts-discovery'],
     seo: {
-      metaTitle: 'Delhi vs Mumbai Street Food – The Great Rivalry | TasteTrails',
+      metaTitle: 'Delhi vs Mumbai Street Food – Great Rivalry | TasteTrails',
       metaDescription: 'Comparing the street food capitals of India: Delhi\'s rich chaats and tandoors versus Mumbai\'s vada pav, bhel puri, and coastal night markets.',
       mainKeyword: 'Delhi vs Mumbai street food',
       relatedKeywords: ['Chandni Chowk food walk', 'Mumbai Chowpatty snacks'],
@@ -741,7 +741,7 @@ export const ARTICLES: Article[] = [
     ],
     relatedArticleSlugs: ['how-to-start-a-food-vlog', 'how-to-write-honest-helpful-restaurant-review', 'delhi-vs-mumbai-street-food'],
     seo: {
-      metaTitle: 'Five Food Photography Tricks for Delicious Shots | TasteTrails',
+      metaTitle: '5 Food Photography Tricks for Great Shots | TasteTrails',
       metaDescription: 'Turn flat smartphone food photos into magazine covers with side-backlighting, dish-angle matching, natural textures, and restrained editing.',
       mainKeyword: 'food photography tricks',
       relatedKeywords: ['food styling angles', 'natural lighting food photos'],

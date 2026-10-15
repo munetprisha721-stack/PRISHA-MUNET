@@ -13,6 +13,8 @@ import { RECIPES } from '../data/recipes';
 import { VLOG_VIDEOS } from '../data/vlogs';
 import { VlogVideo } from '../types';
 import { ArrowRight, Clock, Sparkles, Video, BookOpen, UtensilsCrossed } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -42,6 +44,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         onWatchVlogs={() => onNavigate('#/vlogs')}
       />
 
+      {/* Trending Keywords Ribbon */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+        <PageTrendingKeywords
+          seo={SITE_STATIC_PAGES_SEO.home}
+          trendingLabel="Trending Across TasteTrails"
+        />
+      </div>
+
       {/* C. Featured Food Story */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-6">
@@ -61,7 +71,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {!featuredImgError ? (
                 <img
                   src={featuredArticle.coverImage}
-                  alt={featuredArticle.title}
+                  alt={`${featuredArticle.title} - Lead editorial story on Indian street food`}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setFeaturedImgError(true)}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -86,11 +98,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <BookmarkButton slug={featuredArticle.slug} size="md" showLabel />
                 </div>
 
-                <h2
-                  onClick={() => onNavigate(`#/article/${featuredArticle.slug}`)}
-                  className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F] hover:text-[#B83A24] transition-colors cursor-pointer leading-tight"
-                >
-                  {featuredArticle.title}
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F] hover:text-[#B83A24] transition-colors leading-tight">
+                  <a
+                    href={`#/article/${featuredArticle.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(`#/article/${featuredArticle.slug}`);
+                    }}
+                    className="hover:underline"
+                    aria-label={`Read featured story: ${featuredArticle.title}`}
+                  >
+                    {featuredArticle.title}
+                  </a>
                 </h2>
 
                 <p className="text-[#78685D] text-sm sm:text-base leading-relaxed">
@@ -102,20 +121,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div className="text-xs text-[#78685D]">
                   <span className="font-semibold text-[#35271F] block">{featuredArticle.author.name}</span>
                   <div className="flex items-center gap-1.5 mt-0.5">
-                    <Clock className="w-3 h-3 text-[#35271F]/40" />
+                    <Clock className="w-3.5 h-3.5 text-[#35271F]/40" />
                     <span>{featuredArticle.readingTime}</span>
                     <span>·</span>
                     <span>{featuredArticle.publishedDate}</span>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => onNavigate(`#/article/${featuredArticle.slug}`)}
+                <a
+                  href={`#/article/${featuredArticle.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(`#/article/${featuredArticle.slug}`);
+                  }}
                   className="px-5 py-2.5 bg-[#B83A24] hover:bg-[#9d301d] text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap"
+                  aria-label={`Read full story: ${featuredArticle.title}`}
                 >
                   <span>Read Full Story</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -130,16 +154,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               Curated Highlights
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F]">
-              Trending Food Discoveries (Editor's Picks)
+              Which Trending Food Stories Are Recommended This Week?
             </h2>
+            <p className="text-xs sm:text-sm text-[#78685D] mt-1 max-w-xl">
+              Our editorial staff highlights this week's essential guides to regional chaat battles, master biryani layers, and restaurant review ethics.
+            </p>
           </div>
-          <button
-            onClick={() => onNavigate('#/explore')}
-            className="text-xs font-semibold uppercase tracking-wider text-[#B83A24] hover:text-[#9d301d] flex items-center gap-1"
+          <a
+            href="#/explore"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('#/explore');
+            }}
+            className="text-xs font-semibold uppercase tracking-wider text-[#B83A24] hover:text-[#9d301d] flex items-center gap-1 shrink-0"
+            aria-label="View all 12 food stories and guides"
           >
-            <span>View All Stories</span>
+            <span>View All 12 Stories</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,16 +212,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </span>
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-                Watch the Latest Food Vlogs
+                Which Street Food Vlogs and Video Tours Can You Watch?
               </h2>
+              <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-xl">
+                Experience high-definition video expeditions showcasing Delhi kebab streets, coastal fish markets, and royal sweetmakers.
+              </p>
             </div>
-            <button
-              onClick={() => onNavigate('#/vlogs')}
-              className="text-xs font-semibold uppercase tracking-wider text-[#F4A62A] hover:underline flex items-center gap-1"
+            <a
+              href="#/vlogs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('#/vlogs');
+              }}
+              className="text-xs font-semibold uppercase tracking-wider text-[#F4A62A] hover:underline flex items-center gap-1 shrink-0"
+              aria-label="Explore all video food vlogs"
             >
               <span>Explore All Vlogs</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -215,12 +255,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F]">
-              All 12 Food Articles & Stories
+              What Food Articles and Culinary Guides Are Available?
             </h2>
+            <p className="text-xs sm:text-sm text-[#78685D] mt-1 max-w-xl">
+              Read complete essays spanning street food, biryani traditions, restaurant critique ethics, and camera secrets.
+            </p>
           </div>
-          <p className="text-xs sm:text-sm text-[#78685D] max-w-sm">
-            Read complete essays spanning street food, biryani traditions, restaurant critique ethics, and camera secrets.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

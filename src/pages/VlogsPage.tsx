@@ -3,7 +3,9 @@ import { VideoCard } from '../components/VideoCard';
 import { VideoModal } from '../components/VideoModal';
 import { VLOG_VIDEOS } from '../data/vlogs';
 import { VlogVideo } from '../types';
-import { Video, Filter, PlusCircle, Check } from 'lucide-react';
+import { Video, Filter, PlusCircle, Check, Flame, Play } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 export const VlogsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -27,6 +29,8 @@ export const VlogsPage: React.FC = () => {
     'Food Challenges',
     'Travel Food Diaries',
   ];
+
+  const featuredVlog = useMemo(() => allVideos[0], [allVideos]);
 
   const filteredVideos = useMemo(() => {
     if (selectedCategory === 'All') return allVideos;
@@ -89,6 +93,66 @@ export const VlogsPage: React.FC = () => {
           <span>{showAddForm ? 'Close Add Video' : 'Add Food Vlog URL'}</span>
         </button>
       </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.vlogs}
+        trendingLabel="Trending Video Expeditions"
+      />
+
+      {/* Trending Vlog Spotlight */}
+      {selectedCategory === 'All' && !showAddForm && (
+        <section className="bg-gradient-to-r from-[#B83A24]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-6 rounded-2xl border border-[#B83A24]/20">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div
+              className="relative w-full md:w-1/3 aspect-video rounded-xl overflow-hidden shadow-md cursor-pointer group shrink-0"
+              onClick={() => setActiveModalVideo(featuredVlog)}
+            >
+              <img
+                src={featuredVlog.thumbnail}
+                alt={`${featuredVlog.title} - Trending street food vlog thumbnail`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#B83A24] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play className="w-4 h-4 fill-white ml-0.5" />
+                </div>
+              </div>
+              <span className="absolute top-2 left-2 bg-[#B83A24] text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">
+                #1 Trending Vlog
+              </span>
+            </div>
+            <div className="space-y-2 flex-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#B83A24] flex items-center gap-1.5">
+                <Flame className="w-3.5 h-3.5 fill-[#B83A24]" /> Trending Video Expedition
+              </span>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#35271F] leading-snug">
+                What is This Week's Top Trending Street Food Vlog?
+              </h2>
+              <p className="text-xs sm:text-sm text-[#78685D] leading-relaxed">
+                Our featured video expedition spotlights <strong>{featuredVlog.title}</strong> in {featuredVlog.location} ({featuredVlog.duration}). {featuredVlog.description}
+              </p>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => setActiveModalVideo(featuredVlog)}
+                  className="px-4 py-2 bg-[#B83A24] hover:bg-[#9d301d] text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors flex items-center gap-2"
+                  aria-label={`Watch video: ${featuredVlog.title}`}
+                >
+                  <Play className="w-3.5 h-3.5 fill-white" />
+                  <span>Watch Video: {featuredVlog.title}</span>
+                </button>
+                <div className="flex items-center gap-2 text-xs text-[#78685D]">
+                  <span>Duration: {featuredVlog.duration}</span>
+                  <span>·</span>
+                  <span>Location: {featuredVlog.location}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Add Custom Video Form (PRD Section 8) */}
       {showAddForm && (

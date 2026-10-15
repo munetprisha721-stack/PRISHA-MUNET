@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle, Info } from 'lucide-react';
+import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle, Info, Flame, MapPin } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +46,7 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
       {/* Header */}
       <div className="text-center space-y-3">
         <span className="text-xs uppercase font-bold tracking-wider text-[#B83A24] block">
@@ -56,6 +58,22 @@ export const ContactPage: React.FC = () => {
         <p className="text-[#78685D] text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
           Have a street food tip, a heritage recipe question, or a culinary travel story to share? We’d love to hear from you.
         </p>
+      </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.contact}
+        trendingLabel="Trending Reader Topics"
+      />
+
+      {/* Trending Street Tips Under Review */}
+      <div className="bg-gradient-to-r from-[#B83A24]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-4 rounded-xl border border-[#B83A24]/20 flex items-center justify-between gap-3 text-xs text-[#35271F]">
+        <div className="flex items-center gap-2">
+          <Flame className="w-4 h-4 text-[#B83A24] fill-[#B83A24] shrink-0" />
+          <span className="font-semibold">
+            Trending Stalls Under Reader Review: <span className="font-normal text-[#78685D]">Purani Dilli Bedmi Aloo, Lucknow Gilafi Kebabs & Kolhapur Misal</span>
+          </span>
+        </div>
       </div>
 
       {/* Mandatory PRD Transparency Notice */}

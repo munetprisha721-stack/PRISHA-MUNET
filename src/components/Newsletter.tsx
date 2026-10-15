@@ -27,10 +27,10 @@ export const Newsletter: React.FC = () => {
         </div>
 
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#35271F] mb-3">
-          A Little Taste of Something Delicious.
+          How Can You Receive Weekly Culinary Stories in Your Inbox?
         </h2>
         <p className="text-[#78685D] text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-          Get new recipes, restaurant discoveries, and food stories delivered to your inbox.
+          Subscribe to TasteTrails Dispatch to receive kitchen-tested Indian recipes, honest dining reviews, and regional street food essays delivered directly to your inbox.
         </p>
 
         {status === 'success' ? (

@@ -17,7 +17,9 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
         {!imgError ? (
           <img
             src={review.coverImage}
-            alt={review.name}
+            alt={`${review.name} - ${review.cuisine} restaurant dining in ${review.city}`}
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover"

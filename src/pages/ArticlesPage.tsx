@@ -2,7 +2,9 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { ArticleCard } from '../components/ArticleCard';
 import { ARTICLES } from '../data/articles';
 import { CATEGORIES_LIST } from '../components/CategoryNav';
-import { Search, Filter, ArrowUpDown, X, BookOpen } from 'lucide-react';
+import { Search, Filter, ArrowUpDown, X, BookOpen, Flame } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 interface ArticlesPageProps {
   initialCategory?: string;
@@ -26,6 +28,10 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
   }, [initialCategory]);
 
   const categories = ['All', ...CATEGORIES_LIST.map((c) => c.name)];
+
+  const trendingArticles = useMemo(() => {
+    return ARTICLES.filter((a) => a.trending).slice(0, 3);
+  }, []);
 
   const filteredArticles = useMemo(() => {
     return ARTICLES.filter((article) => {
@@ -65,6 +71,58 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = ({
           Browse our complete collection of 12 in-depth articles exploring street gastronomy, regional spice science, restaurant critique ethics, and food vlogging.
         </p>
       </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.explore}
+        trendingLabel="Trending Editorial Focus"
+      />
+
+      {/* Trending in the Archives Section */}
+      {selectedCategory === 'All' && !searchQuery && (
+        <section className="bg-gradient-to-r from-[#B83A24]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-6 rounded-2xl border border-[#B83A24]/20 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-[#B83A24] text-white flex items-center justify-center">
+                <Flame className="w-4 h-4 fill-white" />
+              </div>
+              <h2 className="font-serif text-lg font-bold text-[#35271F]">
+                Which Indian Food Stories and Guides Are Trending This Week?
+              </h2>
+            </div>
+            <span className="text-xs text-[#78685D] uppercase font-semibold">
+              Most Read Articles
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm text-[#78685D]">
+            Explore this week's most-read subcontinental essays on street chaat rivalries, master biryani layer techniques, and camera secrets for food vloggers.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {trendingArticles.map((t) => (
+              <a
+                key={t.id}
+                href={`#/article/${t.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(`#/article/${t.slug}`);
+                }}
+                className="bg-white/90 p-4 rounded-xl border border-[#35271F]/10 hover:border-[#B83A24] cursor-pointer transition-all hover:shadow-xs group block"
+                aria-label={`Read trending story: ${t.title}`}
+              >
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#B83A24] block mb-1">
+                  {t.category}
+                </span>
+                <h3 className="font-serif font-bold text-sm text-[#35271F] group-hover:text-[#B83A24] line-clamp-2">
+                  {t.title}
+                </h3>
+                <span className="text-[11px] text-[#78685D] mt-2 block group-hover:text-[#B83A24]">
+                  Read {t.readingTime} story by {t.author.name} →
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Filter and Search Bar Controls */}
       <div className="bg-white p-5 rounded-2xl border border-[#35271F]/10 shadow-xs space-y-4">

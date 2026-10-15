@@ -22,7 +22,9 @@ export const RecipeOfTheWeek: React.FC<RecipeOfTheWeekProps> = ({
             {!imgError ? (
               <img
                 src={recipe.coverImage}
-                alt={recipe.name}
+                alt={`${recipe.name} - Recipe of the Week featured dish`}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 onError={() => setImgError(true)}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -73,13 +75,18 @@ export const RecipeOfTheWeek: React.FC<RecipeOfTheWeekProps> = ({
 
             {/* Action */}
             <div className="pt-2">
-              <button
-                onClick={() => onSelect(recipe.slug)}
+              <a
+                href={`#/recipe/${recipe.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelect(recipe.slug);
+                }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#284B36] hover:bg-[#1f3b2a] text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors shadow-sm"
+                aria-label={`View complete recipe and cooking steps for ${recipe.name}`}
               >
                 <span>View Complete Recipe & Steps</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

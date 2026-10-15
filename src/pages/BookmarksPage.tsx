@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { ArticleCard } from '../components/ArticleCard';
 import { ARTICLES } from '../data/articles';
 import { getBookmarkedSlugs, toggleArticleBookmark } from '../utils/storage';
 import { Article } from '../types';
-import { Bookmark, Trash2, ArrowRight } from 'lucide-react';
+import { Bookmark, Trash2, ArrowRight, Flame, Sparkles } from 'lucide-react';
+import { PageTrendingKeywords } from '../components/PageTrendingKeywords';
+import { SITE_STATIC_PAGES_SEO } from '../utils/seo';
 
 interface BookmarksPageProps {
   onNavigate: (path: string) => void;
@@ -33,6 +35,10 @@ export const BookmarksPage: React.FC<BookmarksPageProps> = ({ onNavigate }) => {
     }
   };
 
+  const trendingSuggestions = useMemo(() => {
+    return ARTICLES.filter((a) => a.trending).slice(0, 3);
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       {/* Header */}
@@ -48,7 +54,7 @@ export const BookmarksPage: React.FC<BookmarksPageProps> = ({ onNavigate }) => {
             Saved Food Stories
           </h1>
           <p className="text-[#78685D] text-sm sm:text-base max-w-2xl leading-relaxed">
-            Your saved recipes, street food itineraries, and culinary essays stored locally in your browser.
+            Your saved recipes, street food itineraries, and culinary essays stored locally in your browser for quick offline reference.
           </p>
         </div>
 
@@ -62,6 +68,56 @@ export const BookmarksPage: React.FC<BookmarksPageProps> = ({ onNavigate }) => {
           </button>
         )}
       </div>
+
+      {/* Page Trending & Two Related Keywords */}
+      <PageTrendingKeywords
+        seo={SITE_STATIC_PAGES_SEO.bookmarks}
+        trendingLabel="Trending Reader Library"
+      />
+
+      {/* Trending Bookmarked Reads */}
+      <section className="bg-gradient-to-r from-[#B83A24]/10 via-[#F4A62A]/10 to-[#FFF6E8] p-5 sm:p-6 rounded-2xl border border-[#B83A24]/20 space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-[#B83A24] text-white flex items-center justify-center">
+              <Flame className="w-4 h-4 fill-white" />
+            </div>
+            <h2 className="font-serif text-base sm:text-lg font-bold text-[#35271F]">
+              Which Food Stories Are Most Frequently Bookmarked by Readers?
+            </h2>
+          </div>
+          <span className="text-xs text-[#78685D] uppercase font-semibold hidden sm:inline">
+            Popular Selections
+          </span>
+        </div>
+        <p className="text-xs sm:text-sm text-[#78685D]">
+          Discover the most popular offline culinary reads chosen by the TasteTrails community, including essential Delhi chaat guides and Mughlai recipe secrets.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          {trendingSuggestions.map((art) => (
+            <a
+              key={art.id}
+              href={`#/article/${art.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`#/article/${art.slug}`);
+              }}
+              className="bg-white/80 hover:bg-white p-3 rounded-xl border border-[#35271F]/10 cursor-pointer transition-all hover:shadow-xs group block"
+              aria-label={`Read bookmarked recommendation: ${art.title}`}
+            >
+              <span className="text-[10px] uppercase font-bold text-[#B83A24] block mb-1">
+                {art.category}
+              </span>
+              <h3 className="font-serif text-xs font-bold text-[#35271F] group-hover:text-[#B83A24] transition-colors line-clamp-1">
+                {art.title}
+              </h3>
+              <p className="text-[11px] text-[#78685D] mt-1 line-clamp-1 group-hover:text-[#B83A24]">
+                Read {art.readingTime} story by {art.author.name} →
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
 
       {/* Grid or Empty State */}
       {bookmarkedArticles.length === 0 ? (
