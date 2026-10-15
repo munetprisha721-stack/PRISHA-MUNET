@@ -1,0 +1,8 @@
+{
+  "name": "TasteTrails",
+  "description": "Good Food. Great Stories. Unforgettable Flavours. A digital food magazine celebrating Indian street food discoveries, regional recipes, restaurant reviews, and culinary vlogs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
