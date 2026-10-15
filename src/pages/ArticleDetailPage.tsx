@@ -3,6 +3,7 @@ import { Article } from '../types';
 import { BookmarkButton } from '../components/BookmarkButton';
 import { ArticleCard } from '../components/ArticleCard';
 import { ARTICLES } from '../data/articles';
+import { updatePageSEO } from '../utils/seo';
 import {
   ArrowLeft,
   Clock,
@@ -11,7 +12,8 @@ import {
   Check,
   UtensilsCrossed,
   BookOpen,
-  Tag
+  Tag,
+  Search
 } from 'lucide-react';
 
 interface ArticleDetailPageProps {
@@ -31,7 +33,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (article) {
-      document.title = `${article.title} — TasteTrails`;
+      updatePageSEO(article.seo);
     }
   }, [article, slug]);
 
@@ -117,6 +119,22 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({
             <p className="text-lg text-[#78685D] leading-relaxed font-serif italic pt-2 border-l-2 border-[#F4A62A] pl-4">
               "{article.excerpt}"
             </p>
+
+            {/* SEO Keywords Ribbon */}
+            <div className="bg-white/80 p-3 rounded-lg border border-[#35271F]/10 text-xs flex flex-wrap items-center gap-2 text-[#78685D]">
+              <span className="font-semibold text-[#B83A24] flex items-center gap-1">
+                <Search className="w-3.5 h-3.5" /> Focus Keywords:
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#35271F] font-semibold border border-[#35271F]/10">
+                {article.seo.mainKeyword}
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#78685D] border border-[#35271F]/10">
+                {article.seo.relatedKeywords[0]}
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#78685D] border border-[#35271F]/10">
+                {article.seo.relatedKeywords[1]}
+              </span>
+            </div>
 
             {/* Metadata Bar */}
             <div className="pt-4 flex flex-wrap items-center justify-between gap-4 text-xs text-[#78685D] border-t border-[#35271F]/10">

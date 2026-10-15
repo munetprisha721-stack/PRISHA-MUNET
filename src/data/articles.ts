@@ -72,7 +72,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'indian-spices-ultimate-guide', 'five-food-photography-tricks']
+    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'indian-spices-ultimate-guide', 'five-food-photography-tricks'],
+    seo: {
+      metaTitle: 'Indian Street Food Guide – Chaat & Stalls | TasteTrails',
+      metaDescription: 'Complete guide to Indian street food: iconic pani puri, vada pav, pav bhaji, regional varieties, stall hygiene tips, and chutney flavour science.',
+      mainKeyword: 'Indian street food guide',
+      relatedKeywords: ['pani puri stall culture', 'popular chaat varieties'],
+      canonicalUrl: 'https://tastetrails.app/article/ultimate-guide-to-indian-street-food',
+    }
   },
   {
     id: 'blog-2',
@@ -143,7 +150,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['ultimate-guide-to-indian-street-food', 'how-to-discover-hidden-food-gems', 'indian-desserts-discovery']
+    relatedArticleSlugs: ['ultimate-guide-to-indian-street-food', 'how-to-discover-hidden-food-gems', 'indian-desserts-discovery'],
+    seo: {
+      metaTitle: 'Delhi vs Mumbai Street Food – The Great Rivalry | TasteTrails',
+      metaDescription: 'Comparing the street food capitals of India: Delhi\'s rich chaats and tandoors versus Mumbai\'s vada pav, bhel puri, and coastal night markets.',
+      mainKeyword: 'Delhi vs Mumbai street food',
+      relatedKeywords: ['Chandni Chowk food walk', 'Mumbai Chowpatty snacks'],
+      canonicalUrl: 'https://tastetrails.app/article/delhi-vs-mumbai-street-food',
+    }
   },
   {
     id: 'blog-3',
@@ -225,7 +239,14 @@ export const ARTICLES: Article[] = [
         }
       }
     ],
-    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'how-to-make-restaurant-style-butter-chicken', 'five-food-photography-tricks']
+    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'how-to-make-restaurant-style-butter-chicken', 'five-food-photography-tricks'],
+    seo: {
+      metaTitle: 'How to Write a Helpful Restaurant Review | TasteTrails',
+      metaDescription: 'Learn how to write honest, balanced restaurant critiques covering ambience, service, food freshness, value for money, and ethical disclosures.',
+      mainKeyword: 'how to write a restaurant review',
+      relatedKeywords: ['food criticism ethics', 'restaurant evaluation template'],
+      canonicalUrl: 'https://tastetrails.app/article/how-to-write-honest-helpful-restaurant-review',
+    }
   },
   {
     id: 'blog-4',
@@ -297,7 +318,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['how-to-make-restaurant-style-butter-chicken', 'biryani-regional-styles-explained', 'ultimate-guide-to-indian-street-food']
+    relatedArticleSlugs: ['how-to-make-restaurant-style-butter-chicken', 'biryani-regional-styles-explained', 'ultimate-guide-to-indian-street-food'],
+    seo: {
+      metaTitle: 'Indian Spices Guide – Tadka & Spice Science | TasteTrails',
+      metaDescription: 'Understand whole versus ground spices, how to bloom aromatics in hot ghee, the science of tadka, and a comprehensive 12-spice reference table.',
+      mainKeyword: 'Indian spices guide',
+      relatedKeywords: ['tadka tempering science', 'essential masala pantry'],
+      canonicalUrl: 'https://tastetrails.app/article/indian-spices-ultimate-guide',
+    }
   },
   {
     id: 'blog-5',
@@ -421,7 +449,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['indian-spices-ultimate-guide', 'biryani-regional-styles-explained', 'how-to-write-honest-helpful-restaurant-review']
+    relatedArticleSlugs: ['indian-spices-ultimate-guide', 'biryani-regional-styles-explained', 'how-to-write-honest-helpful-restaurant-review'],
+    seo: {
+      metaTitle: 'Restaurant Butter Chicken Recipe at Home | TasteTrails',
+      metaDescription: 'Master restaurant-style Butter Chicken (Murgh Makhani) with smoky charred chicken, silky tomato-cashew gravy, and authentic fenugreek finish.',
+      mainKeyword: 'restaurant style butter chicken recipe',
+      relatedKeywords: ['authentic murgh makhani', 'velvety makhani gravy'],
+      canonicalUrl: 'https://tastetrails.app/article/how-to-make-restaurant-style-butter-chicken',
+    }
   },
   {
     id: 'blog-6',
@@ -478,7 +513,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['how-to-make-restaurant-style-butter-chicken', 'indian-spices-ultimate-guide', 'delhi-vs-mumbai-street-food']
+    relatedArticleSlugs: ['how-to-make-restaurant-style-butter-chicken', 'indian-spices-ultimate-guide', 'delhi-vs-mumbai-street-food'],
+    seo: {
+      metaTitle: 'Regional Biryani Styles & Dum Methods | TasteTrails',
+      metaDescription: 'Explore the regal diversity of Indian biryanis: Hyderabadi Kacchi dum, Awadhi fragrant pakki, Kolkata spiced potato, and Malabar coastal rice.',
+      mainKeyword: 'regional biryani styles',
+      relatedKeywords: ['Hyderabadi dum biryani technique', 'Awadhi vs Kolkata biryani'],
+      canonicalUrl: 'https://tastetrails.app/article/biryani-regional-styles-explained',
+    }
   },
   {
     id: 'blog-7',
@@ -533,7 +575,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['ultimate-guide-to-indian-street-food', 'delhi-vs-mumbai-street-food', 'indian-spices-ultimate-guide']
+    relatedArticleSlugs: ['ultimate-guide-to-indian-street-food', 'delhi-vs-mumbai-street-food', 'indian-spices-ultimate-guide'],
+    seo: {
+      metaTitle: 'Traditional Indian Desserts & Sweets Guide | TasteTrails',
+      metaDescription: 'Journey across Indian mithai traditions: spongy rasgullas, syrupy jalebis, royal kulfi, Rajasthani ghevar, and festive temple payasams.',
+      mainKeyword: 'traditional Indian desserts',
+      relatedKeywords: ['mithai halwai sweets', 'gulab jamun and jalebi traditions'],
+      canonicalUrl: 'https://tastetrails.app/article/indian-desserts-discovery',
+    }
   },
   {
     id: 'blog-8',
@@ -608,7 +657,14 @@ export const ARTICLES: Article[] = [
         }
       }
     ],
-    relatedArticleSlugs: ['five-food-photography-tricks', 'the-business-of-food-vlogging', 'ultimate-guide-to-indian-street-food']
+    relatedArticleSlugs: ['five-food-photography-tricks', 'the-business-of-food-vlogging', 'ultimate-guide-to-indian-street-food'],
+    seo: {
+      metaTitle: 'How to Start a Food Vlog with a Smartphone | TasteTrails',
+      metaDescription: 'Practical guide for aspiring food creators: shooting 4K food b-roll with your phone, recording crisp ASMR audio, and writing a 60-second script.',
+      mainKeyword: 'how to start a food vlog',
+      relatedKeywords: ['smartphone food filmmaking', '60-second food reel script'],
+      canonicalUrl: 'https://tastetrails.app/article/how-to-start-a-food-vlog',
+    }
   },
   {
     id: 'blog-9',
@@ -683,7 +739,14 @@ export const ARTICLES: Article[] = [
         }
       }
     ],
-    relatedArticleSlugs: ['how-to-start-a-food-vlog', 'how-to-write-honest-helpful-restaurant-review', 'delhi-vs-mumbai-street-food']
+    relatedArticleSlugs: ['how-to-start-a-food-vlog', 'how-to-write-honest-helpful-restaurant-review', 'delhi-vs-mumbai-street-food'],
+    seo: {
+      metaTitle: 'Five Food Photography Tricks for Delicious Shots | TasteTrails',
+      metaDescription: 'Turn flat smartphone food photos into magazine covers with side-backlighting, dish-angle matching, natural textures, and restrained editing.',
+      mainKeyword: 'food photography tricks',
+      relatedKeywords: ['food styling angles', 'natural lighting food photos'],
+      canonicalUrl: 'https://tastetrails.app/article/five-food-photography-tricks',
+    }
   },
   {
     id: 'blog-10',
@@ -752,7 +815,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'ultimate-guide-to-indian-street-food', 'vegetarian-indian-food-beyond-paneer']
+    relatedArticleSlugs: ['delhi-vs-mumbai-street-food', 'ultimate-guide-to-indian-street-food', 'vegetarian-indian-food-beyond-paneer'],
+    seo: {
+      metaTitle: 'Discover Hidden Food Gems While Travelling | TasteTrails',
+      metaDescription: 'Step away from tourist traps to discover genuine culinary secrets with local market tips, single-dish specialists, and a 1-day Jaipur food walk.',
+      mainKeyword: 'discover hidden food gems',
+      relatedKeywords: ['authentic travel meals', 'Jaipur food walk itinerary'],
+      canonicalUrl: 'https://tastetrails.app/article/how-to-discover-hidden-food-gems',
+    }
   },
   {
     id: 'blog-11',
@@ -805,7 +875,14 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['indian-spices-ultimate-guide', 'ultimate-guide-to-indian-street-food', 'how-to-discover-hidden-food-gems']
+    relatedArticleSlugs: ['indian-spices-ultimate-guide', 'ultimate-guide-to-indian-street-food', 'how-to-discover-hidden-food-gems'],
+    seo: {
+      metaTitle: 'Vegetarian Indian Food Beyond Paneer | TasteTrails',
+      metaDescription: 'Celebrate diverse Indian plant-based cooking across seasonal vegetables, sprouted legumes, fermented doughs, and ancient traditional millets.',
+      mainKeyword: 'vegetarian Indian food beyond paneer',
+      relatedKeywords: ['regional plant based curries', 'traditional Indian millets'],
+      canonicalUrl: 'https://tastetrails.app/article/vegetarian-indian-food-beyond-paneer',
+    }
   },
   {
     id: 'blog-12',
@@ -881,6 +958,13 @@ export const ARTICLES: Article[] = [
         ]
       }
     ],
-    relatedArticleSlugs: ['how-to-start-a-food-vlog', 'how-to-write-honest-helpful-restaurant-review', 'five-food-photography-tricks']
+    relatedArticleSlugs: ['how-to-start-a-food-vlog', 'how-to-write-honest-helpful-restaurant-review', 'five-food-photography-tricks'],
+    seo: {
+      metaTitle: 'The Business of Food Vlogging & Brand Building | TasteTrails',
+      metaDescription: 'Build an enduring food brand beyond viral vanity clicks with diverse revenue streams, ethical disclosures, and a 30-day publishing calendar.',
+      mainKeyword: 'food vlogging business',
+      relatedKeywords: ['creator brand building', 'food content calendar'],
+      canonicalUrl: 'https://tastetrails.app/article/the-business-of-food-vlogging',
+    }
   }
 ];

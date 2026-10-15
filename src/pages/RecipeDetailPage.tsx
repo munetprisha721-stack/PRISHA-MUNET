@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Recipe } from '../types';
 import { RECIPES } from '../data/recipes';
+import { updatePageSEO } from '../utils/seo';
 import {
   ArrowLeft,
   Clock,
@@ -12,7 +13,8 @@ import {
   UtensilsCrossed,
   Printer,
   Minus,
-  Plus
+  Plus,
+  Search
 } from 'lucide-react';
 
 interface RecipeDetailPageProps {
@@ -35,7 +37,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (recipe) {
       setServingScale(recipe.servings);
-      document.title = `${recipe.name} — TasteTrails Recipes`;
+      updatePageSEO(recipe.seo);
     }
   }, [recipe, slug]);
 
@@ -113,6 +115,22 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
             <p className="text-base sm:text-lg text-[#78685D] leading-relaxed max-w-3xl">
               {recipe.description}
             </p>
+
+            {/* SEO Keywords Ribbon */}
+            <div className="bg-white/80 p-3 rounded-lg border border-[#35271F]/10 text-xs flex flex-wrap items-center gap-2 text-[#78685D]">
+              <span className="font-semibold text-[#284B36] flex items-center gap-1">
+                <Search className="w-3.5 h-3.5" /> Recipe Focus Keywords:
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#35271F] font-semibold border border-[#35271F]/10">
+                {recipe.seo.mainKeyword}
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#78685D] border border-[#35271F]/10">
+                {recipe.seo.relatedKeywords[0]}
+              </span>
+              <span className="bg-[#FFF6E8] px-2 py-0.5 rounded text-[#78685D] border border-[#35271F]/10">
+                {recipe.seo.relatedKeywords[1]}
+              </span>
+            </div>
 
             {/* Quick Metrics Bar */}
             <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-[#35271F]/10">

@@ -70,7 +70,14 @@ export const RECIPES: Recipe[] = [
       'Vegetarian: Replace chicken with 500g pan-seared paneer cubes or roasted cauliflower florets.'
     ],
     storage: 'Refrigerate in an airtight glass container for up to 3 days. Reheat gently over low heat with a splash of warm milk.',
-    allergens: ['Dairy (Butter, Cream, Curd)', 'Tree Nuts (Cashews)']
+    allergens: ['Dairy (Butter, Cream, Curd)', 'Tree Nuts (Cashews)'],
+    seo: {
+      metaTitle: 'Restaurant Butter Chicken Recipe | TasteTrails',
+      metaDescription: 'Cook authentic restaurant-style Butter Chicken with charred tandoori chicken, strained tomato-cashew makhani gravy, and butter emulsion.',
+      mainKeyword: 'homemade butter chicken recipe',
+      relatedKeywords: ['creamy murgh makhani', 'boneless chicken curry'],
+      canonicalUrl: 'https://tastetrails.app/recipe/restaurant-style-butter-chicken',
+    }
   },
   {
     id: 'recipe-2',
@@ -141,7 +148,14 @@ export const RECIPES: Recipe[] = [
       'Vegetarian: Substitute chicken with 500g mixed parboiled vegetables (potatoes, carrots, beans, cauliflower) and 200g paneer cubes.'
     ],
     storage: 'Keep in an airtight container for up to 2 days. Reheat by sprinkling a tablespoon of water and microwaving covered, or steaming.',
-    allergens: ['Dairy (Ghee, Curd, Milk)']
+    allergens: ['Dairy (Ghee, Curd, Milk)'],
+    seo: {
+      metaTitle: 'Hyderabadi Chicken Dum Biryani Recipe | TasteTrails',
+      metaDescription: 'Master authentic Hyderabadi Dum Biryani with marinated raw chicken, aged basmati rice, saffron milk, and aromatic dough-sealed handi dum cooking.',
+      mainKeyword: 'authentic Hyderabadi chicken dum biryani',
+      relatedKeywords: ['kacchi dum cooking method', 'aged basmati rice feast'],
+      canonicalUrl: 'https://tastetrails.app/recipe/authentic-hyderabadi-dum-biryani',
+    }
   },
   {
     id: 'recipe-3',
@@ -206,7 +220,14 @@ export const RECIPES: Recipe[] = [
       'Gluten-conscious: Ensure your asafoetida is gluten-free and serve the vada on gluten-free burger buns.'
     ],
     storage: 'Best enjoyed fresh. Reheat leftover vadas in an air fryer at 180°C for 4 minutes to restore crispiness.',
-    allergens: ['Peanuts (in dry chutney)', 'Gluten (Pav buns, check hing)']
+    allergens: ['Peanuts (in dry chutney)', 'Gluten (Pav buns, check hing)'],
+    seo: {
+      metaTitle: 'Mumbai Vada Pav with Dry Garlic Chutney | TasteTrails',
+      metaDescription: 'Crisp spiced potato fritters in fluffy pav buns slathered with fiery dry garlic-peanut chutney and tangy tamarind for the ultimate street bite.',
+      mainKeyword: 'Mumbai vada pav recipe',
+      relatedKeywords: ['batata vada snack', 'spicy dry garlic chutney'],
+      canonicalUrl: 'https://tastetrails.app/recipe/classic-mumbai-vada-pav',
+    }
   },
   {
     id: 'recipe-4',
@@ -266,7 +287,14 @@ export const RECIPES: Recipe[] = [
       'Vegan: Substitute dairy butter with neutral oil/vegan butter and heavy cream with rich cashew cream.'
     ],
     storage: 'Refrigerate for up to 4 days. Dal Makhani actually tastes even better the next day as flavours deepen.',
-    allergens: ['Dairy (Butter, Cream)']
+    allergens: ['Dairy (Butter, Cream)'],
+    seo: {
+      metaTitle: 'Slow Cooked Dal Makhani Recipe | TasteTrails',
+      metaDescription: 'Velvety black lentils and kidney beans slow-simmered with butter, tomato puree, and cream for rich, traditional Punjabi comfort.',
+      mainKeyword: 'slow cooked dal makhani',
+      relatedKeywords: ['creamy black urad dal', 'restaurant style dal makhani'],
+      canonicalUrl: 'https://tastetrails.app/recipe/dal-makhani-slow-cooked',
+    }
   },
   {
     id: 'recipe-5',
@@ -322,7 +350,14 @@ export const RECIPES: Recipe[] = [
       'Health-conscious: Toss boiled cubes in 1 tbsp oil and air-fry at 200°C for 18 minutes.'
     ],
     storage: 'Must be prepared and consumed immediately; potatoes will lose their crisp crunch upon sitting.',
-    allergens: ['None (Naturally Gluten-Free & Vegan)']
+    allergens: ['None (Naturally Gluten-Free & Vegan)'],
+    seo: {
+      metaTitle: 'Crisp Old Delhi Aloo Chaat Recipe | TasteTrails',
+      metaDescription: 'Crispy shallow-fried golden potato cubes tossed hot with roasted cumin, black salt, sweet tamarind, mint chutney, and fresh pomegranate arils.',
+      mainKeyword: 'Old Delhi aloo chaat recipe',
+      relatedKeywords: ['crispy fried potato chaat', 'tangy street chaat chutneys'],
+      canonicalUrl: 'https://tastetrails.app/recipe/crisp-delhi-aloo-chaat',
+    }
   },
   {
     id: 'recipe-6',
@@ -384,6 +419,13 @@ export const RECIPES: Recipe[] = [
       'Sugar alternative: Stir in crushed date palm jaggery (nolen gur) or coconut sugar after taking the pot off the flame.'
     ],
     storage: 'Keep refrigerated covered with cling wrap for up to 4 days. Serve cold.',
-    allergens: ['Dairy (Milk)', 'Tree Nuts (Pistachios, Almonds)']
+    allergens: ['Dairy (Milk)', 'Tree Nuts (Pistachios, Almonds)'],
+    seo: {
+      metaTitle: 'Royal Saffron Phirni Recipe | TasteTrails',
+      metaDescription: 'Slow-cooked coarse basmati rice pudding infused with pure Kashmiri saffron, cardamom, and rose water, chilled in traditional earthenware bowls.',
+      mainKeyword: 'royal saffron phirni recipe',
+      relatedKeywords: ['Kashmiri rice pudding', 'earthenware pot chilled mithai'],
+      canonicalUrl: 'https://tastetrails.app/recipe/royal-saffron-phirni',
+    }
   }
 ];

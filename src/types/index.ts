@@ -32,6 +32,14 @@ export interface ArticleSection {
   quoteAuthor?: string;
 }
 
+export interface PageSEO {
+  metaTitle: string;
+  metaDescription: string;
+  mainKeyword: string;
+  relatedKeywords: [string, string];
+  canonicalUrl: string;
+}
+
 export interface Article {
   id: string;
   slug: string;
@@ -52,6 +60,7 @@ export interface Article {
   trending?: boolean;
   sections: ArticleSection[];
   relatedArticleSlugs: string[];
+  seo: PageSEO;
 }
 
 export interface RecipeIngredient {
@@ -87,6 +96,7 @@ export interface Recipe {
   substitutions: string[];
   storage: string;
   allergens: string[];
+  seo: PageSEO;
 }
 
 export interface VlogVideo {
